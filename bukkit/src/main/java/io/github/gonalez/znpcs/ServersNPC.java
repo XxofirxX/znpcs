@@ -76,7 +76,7 @@ public class ServersNPC extends JavaPlugin {
     getServer().getMessenger().registerOutgoingPluginChannel(this, "BungeeCord");
     new MetricsLite(this, 8054);
 
-    ZNPConfigUtils.setConfigurationManager(new PluginConfigConfigurationFormat(pluginPath, GSON));
+//    ZNPConfigUtils.setConfigurationManager(new PluginConfigConfigurationFormat(pluginPath, GSON));
 
     SkinFetcher skinFetcher =
         SkinFetcherImpl.builder()
