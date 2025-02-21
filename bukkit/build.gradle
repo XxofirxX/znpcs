@@ -6,17 +6,27 @@ repositories {
     maven { url = "https://libraries.minecraft.net/" }
     maven { url = "https://repo.extendedclip.com/content/repositories/placeholderapi/" }
     maven { url = "https://hub.spigotmc.org/nexus/content/repositories/snapshots/" }
+    maven { url = 'https://jitpack.io' }
 }
 
 dependencies {
     implementation project(":core")
+    implementation 'com.github.Revxrsal.Lamp:common:3.2.1'
+    implementation 'com.github.Revxrsal.Lamp:brigadier:3.2.1'
+    implementation 'com.github.Revxrsal.Lamp:bukkit:3.2.1'
     compileOnly("io.netty:netty-all:4.1.77.Final")
     compileOnly("org.spigotmc:spigot-api:1.16.2-R0.1-SNAPSHOT")
-    compileOnly("me.clip:placeholderapi:2.9.2")
+    compileOnly("me.clip:placeholderapi:2.11.6")
+}
+
+compileJava { // Preserve parameter names in the bytecode
+    options.compilerArgs += ["-parameters"]
 }
 
 shadowJar {
     dependencies {
+        include(dependency('com.github.Revxrsal.Lamp:.*'))
         include(dependency("io.github.gonalez.znpcs:.*"))
     }
+    relocate 'revxrsal.commands', 'io.github.gonalez.znpcs.commands.lamp'
 }

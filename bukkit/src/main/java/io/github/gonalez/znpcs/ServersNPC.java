@@ -29,6 +29,7 @@ import org.bukkit.Bukkit;
 import org.bukkit.Location;
 import org.bukkit.inventory.ItemStack;
 import org.bukkit.plugin.java.JavaPlugin;
+import revxrsal.commands.bukkit.BukkitCommandHandler;
 
 import java.io.File;
 import java.io.IOException;
@@ -57,9 +58,13 @@ public class ServersNPC extends JavaPlugin {
 
   private ZNPConfigSaveTask configSaveTask;
 
+  private BukkitCommandHandler commandHandler;
+
   @Override
   public void onEnable() {
     Path pluginPath = getDataFolder().toPath();
+
+    commandHandler = BukkitCommandHandler.create(this);
 
     Path pathPath = pluginPath.resolve("paths");
     try {
